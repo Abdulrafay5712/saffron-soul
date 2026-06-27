@@ -32,12 +32,19 @@ export default function Gallery() {
         }}>
           {images.map((img, i) => (
             <div key={i} className="card" style={{ 
-              height: i === 0 ? '300px' : '200px',
-              gridRow: i === 0 ? 'span 2' : 'auto',
-              overflow: 'hidden'
+              height: '200px', // All images same height
+              overflow: 'hidden',
+              borderRadius: '8px',
             }}>
-              <img src={img} alt={`Gallery ${i+1}`} 
-                style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s' }}
+              <img 
+                src={img} 
+                alt={`Gallery ${i+1}`} 
+                style={{ 
+                  width: '100%', 
+                  height: '100%', 
+                  objectFit: 'cover', 
+                  transition: 'transform 0.5s ease',
+                }}
                 onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.1)')}
                 onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
               />

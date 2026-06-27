@@ -25,9 +25,10 @@ export default function Home() {
   return (
     <main style={{ background: '#000' }}>
       <Navbar onReserve={() => setShowReservation(true)} onCart={() => setShowCart(true)} />
-      <Hero onReserve={() => setShowReservation(true)} onOrder={function (): void {
-        throw new Error("Function not implemented.");
-      } } />
+      <Hero 
+        onReserve={() => setShowReservation(true)} 
+        onOrder={() => setShowCart(true)} 
+      />
       <About />
       <Specialties />
       <MenuSection />

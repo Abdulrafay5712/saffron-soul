@@ -10,6 +10,7 @@ function showToast(message: string) {
   setTimeout(() => {
     toast.style.opacity = '0';
     toast.style.transition = 'opacity 0.3s ease';
+    toast.style.zIndex = '200';
     setTimeout(() => toast.remove(), 300);
   }, 2000);
 }
