@@ -61,7 +61,12 @@ export default function CartModal({ show, onClose, onPayment }: { show: boolean;
           <h2 style={{ fontSize: '24px', fontFamily: 'Cormorant Garamond, serif' }}>
             <span className="gold-gradient">Your</span> Order
           </h2>
-          <button onClick={onClose} style={{ background: 'none', border: 'none', color: '#fff', fontSize: '22px', cursor: 'pointer' }}>✕</button>
+          <button onClick={onClose} style={{ background: 'none', border: 'none', color: '#fff', fontSize: '22px', cursor: 'pointer' }}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
         </div>
 
         {/* Order Type Selection */}
@@ -77,7 +82,14 @@ export default function CartModal({ show, onClose, onPayment }: { show: boolean;
               border: orderType === 'takeaway' ? 'none' : '2px solid #22c55e',
             }}
           >
-            🛍️ Takeaway<br />
+            <div style={{ marginBottom: '6px' }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline' }}>
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <path d="M16 10a4 4 0 0 1-8 0"/>
+              </svg>
+            </div>
+            Takeaway<br />
             <span style={{ fontSize: '11px', fontWeight: 400, opacity: 0.8 }}>Pick up at restaurant</span>
           </button>
           <button 
@@ -90,14 +102,28 @@ export default function CartModal({ show, onClose, onPayment }: { show: boolean;
               border: orderType === 'delivery' ? 'none' : '2px solid #3b82f6',
             }}
           >
-            🛵 Delivery<br />
+            <div style={{ marginBottom: '6px' }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline' }}>
+                <rect x="1" y="3" width="15" height="13"/>
+                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                <circle cx="5.5" cy="18.5" r="2.5"/>
+                <circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+            </div>
+            Delivery<br />
             <span style={{ fontSize: '11px', fontWeight: 400, opacity: 0.8 }}>Delivered to your door</span>
           </button>
         </div>
 
         {cart.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '60px 0', color: '#666' }}>
-            <p style={{ fontSize: '48px', marginBottom: '16px' }}>🛒</p>
+            <div style={{ marginBottom: '16px' }}>
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline' }}>
+                <circle cx="9" cy="21" r="1"/>
+                <circle cx="20" cy="21" r="1"/>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+              </svg>
+            </div>
             <p style={{ fontSize: '16px', marginBottom: '4px' }}>Your cart is empty</p>
             <p style={{ fontSize: '13px' }}>Browse our menu to add delicious items</p>
           </div>
@@ -112,8 +138,12 @@ export default function CartModal({ show, onClose, onPayment }: { show: boolean;
                 padding: '16px', 
                 marginBottom: '16px' 
               }}>
-                <p style={{ color: '#3b82f6', fontSize: '13px', fontWeight: 600, marginBottom: '12px' }}>
-                  📍 Delivery Details
+                <p style={{ color: '#3b82f6', fontSize: '13px', fontWeight: 600, marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                  Delivery Details
                 </p>
                 <input 
                   type="text" 
@@ -167,7 +197,10 @@ export default function CartModal({ show, onClose, onPayment }: { show: boolean;
                   </div>
                   <button onClick={() => removeFromCart(item.id)} 
                     style={{ background: 'none', border: 'none', color: '#ef4444', cursor: 'pointer', fontSize: '14px', padding: '4px' }}>
-                    ✕
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="18" y1="6" x2="6" y2="18"/>
+                      <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
                   </button>
                 </div>
               ))}

@@ -12,7 +12,6 @@ function showToast(message: string) {
   setTimeout(() => {
     toast.style.opacity = '0';
     toast.style.transition = 'opacity 0.3s ease';
-    toast.style.zIndex = '200';
     setTimeout(() => toast.remove(), 300);
   }, 2000);
 }
@@ -29,7 +28,6 @@ export default function MenuSection() {
 
   const filteredItems = menuItems.filter(item => item.category === activeCategory);
 
-  // Check scroll position
   const checkScroll = useCallback(() => {
     if (scrollRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
@@ -38,14 +36,12 @@ export default function MenuSection() {
     }
   }, []);
 
-  // Reset and start auto-slide when category changes
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollLeft = 0;
     }
     checkScroll();
 
-    // Start auto-slide
     const startAutoSlide = () => {
       autoSlideRef.current = setInterval(() => {
         if (scrollRef.current) {
@@ -66,7 +62,6 @@ export default function MenuSection() {
     };
   }, [activeCategory, checkScroll]);
 
-  // Listen for scroll events
   useEffect(() => {
     const ref = scrollRef.current;
     if (ref) {
@@ -82,7 +77,6 @@ export default function MenuSection() {
     }
   };
 
-  // Pause auto-slide on hover
   const pauseAutoSlide = () => {
     if (autoSlideRef.current) clearInterval(autoSlideRef.current);
   };
@@ -109,16 +103,16 @@ export default function MenuSection() {
       image: item.image,
       category: item.category,
     });
-    showToast(`${item.name} added ✓`);
+    showToast(`${item.name} aggiunto ✓`);
   };
 
   return (
-    <section id="menu" style={{ padding: '60px 16px', background: '#050505' }}>
+    <section id="menu" style={{ padding: '60px 16px', background: '#241510' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-          <span className="tag">OUR MENU</span>
-          <h2 style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', fontWeight: 600, marginTop: '16px', fontFamily: 'Cormorant Garamond, serif' }}>
-            <span className="gold-gradient">Authentic</span> Indian Cuisine
+          <span className="tag">IL NOSTRO MENÙ</span>
+          <h2 style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', fontWeight: 600, marginTop: '16px', fontFamily: 'Playfair Display, serif' }}>
+            <span className="gold-gradient">Autentica</span> Cucina Italiana
           </h2>
         </div>
 
@@ -141,16 +135,16 @@ export default function MenuSection() {
                 whiteSpace: 'nowrap',
                 flexShrink: 0,
                 padding: '8px 16px',
-                borderRadius: '9999px',
+                borderRadius: '4px',
                 fontSize: '11px',
                 fontWeight: 600,
                 textTransform: 'uppercase',
-                letterSpacing: '0.05em',
+                letterSpacing: '0.08em',
                 cursor: 'pointer',
                 transition: 'all 0.2s',
-                background: activeCategory === cat ? '#c59b3b' : 'transparent',
-                color: activeCategory === cat ? '#000' : '#999',
-                border: activeCategory === cat ? 'none' : '1px solid #1a1a1a',
+                background: activeCategory === cat ? '#c0392b' : 'transparent',
+                color: activeCategory === cat ? '#f5e6d3' : '#8b7355',
+                border: activeCategory === cat ? 'none' : '1px solid #3d2318',
               }}
             >
               {cat}
@@ -162,9 +156,9 @@ export default function MenuSection() {
         <h3 style={{
           fontSize: '20px', 
           fontWeight: 600, 
-          color: '#c59b3b',
+          color: '#e74c3c',
           marginBottom: '16px',
-          fontFamily: 'Cormorant Garamond, serif',
+          fontFamily: 'Playfair Display, serif',
         }}>
           {activeCategory}
         </h3>
@@ -187,10 +181,10 @@ export default function MenuSection() {
                 zIndex: 10,
                 width: '36px',
                 height: '36px',
-                borderRadius: '50%',
-                background: 'rgba(0,0,0,0.8)',
-                border: '1px solid #c59b3b',
-                color: '#c59b3b',
+                borderRadius: '4px',
+                background: 'rgba(26,15,10,0.9)',
+                border: '1px solid #c0392b',
+                color: '#e74c3c',
                 fontSize: '18px',
                 cursor: 'pointer',
                 display: 'flex',
@@ -199,8 +193,8 @@ export default function MenuSection() {
                 backdropFilter: 'blur(4px)',
                 transition: 'all 0.3s',
               }}
-              onMouseEnter={e => { e.currentTarget.style.background = '#c59b3b'; e.currentTarget.style.color = '#000'; }}
-              onMouseLeave={e => { e.currentTarget.style.background = 'rgba(0,0,0,0.8)'; e.currentTarget.style.color = '#c59b3b'; }}
+              onMouseEnter={e => { e.currentTarget.style.background = '#c0392b'; e.currentTarget.style.color = '#f5e6d3'; }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'rgba(26,15,10,0.9)'; e.currentTarget.style.color = '#e74c3c'; }}
             >
               ‹
             </button>
@@ -218,10 +212,10 @@ export default function MenuSection() {
                 zIndex: 10,
                 width: '36px',
                 height: '36px',
-                borderRadius: '50%',
-                background: 'rgba(0,0,0,0.8)',
-                border: '1px solid #c59b3b',
-                color: '#c59b3b',
+                borderRadius: '4px',
+                background: 'rgba(26,15,10,0.9)',
+                border: '1px solid #c0392b',
+                color: '#e74c3c',
                 fontSize: '18px',
                 cursor: 'pointer',
                 display: 'flex',
@@ -230,8 +224,8 @@ export default function MenuSection() {
                 backdropFilter: 'blur(4px)',
                 transition: 'all 0.3s',
               }}
-              onMouseEnter={e => { e.currentTarget.style.background = '#c59b3b'; e.currentTarget.style.color = '#000'; }}
-              onMouseLeave={e => { e.currentTarget.style.background = 'rgba(0,0,0,0.8)'; e.currentTarget.style.color = '#c59b3b'; }}
+              onMouseEnter={e => { e.currentTarget.style.background = '#c0392b'; e.currentTarget.style.color = '#f5e6d3'; }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'rgba(26,15,10,0.9)'; e.currentTarget.style.color = '#e74c3c'; }}
             >
               ›
             </button>
@@ -268,8 +262,8 @@ export default function MenuSection() {
                     loading="lazy" />
                   <span style={{
                     position: 'absolute', bottom: '6px', right: '6px',
-                    background: 'rgba(0,0,0,0.85)', color: '#c59b3b',
-                    padding: '2px 8px', borderRadius: '9999px',
+                    background: 'rgba(26,15,10,0.9)', color: '#f5e6d3',
+                    padding: '2px 8px', borderRadius: '4px',
                     fontSize: '11px', fontWeight: 700
                   }}>
                     €{item.price.toFixed(2)}
@@ -283,19 +277,20 @@ export default function MenuSection() {
                     lineHeight: 1.2,
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
-                    whiteSpace: 'nowrap'
+                    whiteSpace: 'nowrap',
+                    color: '#f5e6d3'
                   }}>
                     {item.name}
                   </h4>
                   <button 
                     onClick={() => handleAddToCart(item)}
+                    className="btn-primary"
                     style={{
                       width: '100%', padding: '8px', fontSize: '11px',
-                      background: '#c59b3b', color: '#000', border: 'none',
-                      borderRadius: '8px', fontWeight: 600, cursor: 'pointer',
+                      borderRadius: '4px', fontWeight: 600, cursor: 'pointer',
                       whiteSpace: 'nowrap'
                     }}>
-                    + Add
+                    + Aggiungi
                   </button>
                 </div>
               </div>
@@ -304,7 +299,7 @@ export default function MenuSection() {
         </div>
 
         {filteredItems.length === 0 && (
-          <p style={{ textAlign: 'center', color: '#666', padding: '40px' }}>No items in this category</p>
+          <p style={{ textAlign: 'center', color: '#8b7355', padding: '40px' }}>Nessun piatto in questa categoria</p>
         )}
       </div>
     </section>
